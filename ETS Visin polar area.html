@@ -1,0 +1,121 @@
+<html>
+
+<head>
+  <title>RINETA ARI PRISISCA - 06311940000075</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<h1 class="ETS"> ETS VISUALISASI INFORMASI </h1>
+<h4 class="nama"> Rineta Ari Prisisca-06311940000075-Aktuaria</h4>
+<h2 class="judul"> Rata-Rata Harga Laptop tiap Perusahaan</h2>
+
+<style>
+  body {
+    background-color: rgb(121, 136, 139);
+  }
+    h1{
+    color:rgb(133, 102, 143);
+}
+    h2{
+    color:rgb(133, 102, 143);
+}
+    h4{
+    color:rgb(78, 74, 80);
+}
+  .ETS {
+    text-align: center;
+  }
+  
+  .nama {
+    text-align: center;
+  }
+  .judul {
+    text-align: center;
+  }
+  body{
+      background-image: url(https://i.pinimg.com/originals/ee/3e/4c/ee3e4c0c619248199d6cef77294db156.jpg);
+  }
+</style>
+
+<body>
+<br>
+  <div class="chart-container" style="position:relative; height: 90vh; width: 70vw; margin: auto;">
+    <canvas id="myChart"></canvas>
+  </div>
+
+  <script>
+    const labels = [
+      'Acer',
+      'Apple',
+      'Asus',
+      'Dell',
+      'HP',
+    ];
+    const data = {
+      labels: labels,
+      datasets: [{
+        label: 'My First dataset',
+        backgroundColor: [
+          'rgb(248, 153, 153 )',
+          'rgb(170, 239, 237)',
+          'rgb(236, 240, 135)',
+          'rgb(177, 236, 185)',
+          'rgb(232, 147, 240 )'],
+        borderColor: [
+          'rgb(253, 92, 1 )'],
+        data: [1005.08, 1710.69, 1092.18, 1031.48, 1158.85],
+    }]
+    };
+    let delayed;
+const config = {
+  type: 'polarArea',
+  data: data,
+  options: {
+    plugins: {
+          legend: {
+            position: 'top',
+            title: {
+              display: true,
+              text: 'Chart berikut menunjukkan hasil rata-rata harga penjualan laptop dari beberapa perusahaan terpilih',
+              color: 'rgb(83, 126, 120)', 
+            }
+          }
+        },
+    animation: {
+      onComplete: () => {
+        delayed = true;
+      },
+      delay: (context) => {
+        let delay = 0;
+        if (context.type === 'data' && context.mode === 'default' && !delayed) {
+          delay = context.dataIndex * 300 + context.datasetIndex * 100;
+        }
+        return delay;
+      },
+    },
+    scales: {
+      x: {
+        stacked: true,
+      },
+      y: {
+        stacked: true
+      }
+    }
+  }
+};
+    
+  </script>
+
+  <script>
+    const myChart = new Chart(
+      document.getElementById('myChart'),
+      config
+    );
+  </script>
+
+
+</body>
+
+
+
+</html>
